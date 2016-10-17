@@ -1,0 +1,88 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.sprakas1uncc.iotproject.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center_horizontal"
+        android:text="pocket tutor"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="18dp" />
+
+    <EditText
+
+        android:id="@+id/editText1"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
+        android:gravity="center"
+        android:ems="10"
+        android:hint="@string/username_hint" />
+
+    <EditText
+
+        android:id="@+id/editText2"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
+        android:gravity="center"
+        android:ems="10"
+        android:hint="password" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="180dp"
+        android:text="  Reset  " />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="180dp"
+        android:text="@string/login_button" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="240dp"
+        android:text="@string/register_button" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="290dp"
+        android:text="@string/forgot_password" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="340dp"
+        android:text="@string/exit_button" />
+
+
+
+
+</FrameLayout>

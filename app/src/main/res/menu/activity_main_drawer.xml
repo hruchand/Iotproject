@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+
+
+
+    <item android:title="FEATURES">
+        <menu>
+            <item
+                android:id="@+id/security_system"
+                android:icon="@drawable/lock_solid"
+                android:title="Security System" />
+            <item
+                android:id="@+id/images"
+                android:icon="@drawable/image"
+                android:title="Images" />
+            <item
+                android:id="@+id/locks"
+                android:icon="@drawable/key"
+                android:title="Locks" />
+            <item
+                android:id="@+id/garage_doors"
+                android:icon="@drawable/garage"
+                android:title="Garage Doors" />
+            <item
+                android:id="@+id/video"
+                android:icon="@drawable/video"
+                android:title="Video" />
+            <item
+                android:id="@+id/lights"
+                android:icon="@drawable/lights"
+                android:title="Lights" />
+            <item
+                android:id="@+id/thermostats"
+                android:icon="@drawable/thermostat"
+                android:title="Thermostats" />
+
+            <item
+                android:id="@+id/energy"
+                android:icon="@drawable/energy"
+                android:title="Energy" />
+        </menu>
+    </item>
+
+
+    <item android:title="SETTINGS">
+        <menu>
+            <item
+                android:id="@+id/notifications"
+                android:icon="@drawable/notification"
+                android:title="Notifications" />
+            <item
+                android:id="@+id/geo_services"
+                android:icon="@drawable/geoservices"
+                android:title="Geo-Services" />
+            <item
+                android:id="@+id/passcode"
+                android:icon="@drawable/images"
+                android:title="Passcode" />
+        </menu>
+    </item>
+
+</menu>
