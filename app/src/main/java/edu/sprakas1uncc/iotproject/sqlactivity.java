@@ -1,3 +1,5 @@
+package edu.sprakas1uncc.iotproject;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -153,7 +155,7 @@ public class sqlactivity extends AppCompatActivity {
             HttpClient httpclient = new DefaultHttpClient();
 
             // have to change the ip here to correct ip
-            HttpPost httppost = new HttpPost("http://70.63.101.46/login.php");
+            HttpPost httppost = new HttpPost("http://192.168.1.13/login.php");
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs1));
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();
