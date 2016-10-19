@@ -1,5 +1,6 @@
 package edu.sprakas1uncc.iotproject;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -7,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
  * Created by siddhartha on 10/15/2016.
  */
 
-public class Home extends AppCompatActivity {
+public class Home extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.activity_main);
     }
 }
