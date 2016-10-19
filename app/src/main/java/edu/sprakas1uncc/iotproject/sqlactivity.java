@@ -80,7 +80,7 @@ public class sqlactivity extends AppCompatActivity {
                             Toast.makeText(getBaseContext(), "Login Successfull",Toast.LENGTH_SHORT ).show();
                             Bundle bundle = new Bundle();
                             bundle.putString("username", userString);
-                            Intent home = new Intent(getBaseContext(), Home.class);
+                            Intent home = new Intent(getBaseContext(), MainActivity.class);
                             home.putExtras(bundle);
                             startActivity(home);
                         }
