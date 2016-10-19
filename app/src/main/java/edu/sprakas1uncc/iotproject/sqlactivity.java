@@ -115,7 +115,7 @@ public class sqlactivity extends AppCompatActivity {
         forgotButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent forgotIntent = new Intent(getBaseContext(),Thermostats.class);
+                Intent forgotIntent = new Intent(getBaseContext(),ForgotPasswordActivity.class);
                 startActivity(forgotIntent);
             }
         });

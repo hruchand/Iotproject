@@ -62,6 +62,15 @@ public class MainActivity extends AppCompatActivity{
             int id = item.getItemId();
 
                 switch (id){
+                    case (R.id.home):
+                        fra = getSupportFragmentManager().beginTransaction();
+                        fra.replace(R.id.mainContainer,new HomeFragment());
+                        fra.commit();
+                        getSupportActionBar().setTitle("Security System");
+                        item.setChecked(true);
+                        drawer.closeDrawers();
+                        break;
+
                     case (R.id.security_system):
                         fra = getSupportFragmentManager().beginTransaction();
                         fra.replace(R.id.mainContainer,new SecuritySystemFragment());

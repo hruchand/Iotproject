@@ -50,6 +50,18 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="uncc.sprakas1.edu.ForgotPasswordActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
 
         <activity
             android:name=".MainActivity"
