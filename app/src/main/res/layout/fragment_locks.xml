@@ -45,7 +45,7 @@
         android:layout_marginTop="100dp"
         android:text="Front Door" />
     <ToggleButton
-        android:id="@+id/flashlightButton"
+        android:id="@+id/frontButton"
         style="@style/Widget.AppCompat.Button"
         android:layout_above="@+id/buttonStrobeLight"
         android:layout_marginTop="100dp"
