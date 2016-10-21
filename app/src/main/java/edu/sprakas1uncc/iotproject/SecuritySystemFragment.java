@@ -42,6 +42,12 @@ public class SecuritySystemFragment extends Fragment {
                 if  (checkedId == R.id.armedaway){
                     Log.d("radio", "armedaway");
                 }
+                if (checkedId == R.id.armedstay){
+                    Log.d("radio","armedstay");
+                }
+                if (checkedId == R.id.disarmed){
+                    Log.d("radio","disarmed");
+                }
 
             }
         });
