@@ -2,6 +2,7 @@ package edu.sprakas1uncc.iotproject;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,8 +25,8 @@ public class Thermostats extends Fragment {
     public static  String fan_mode_main = "";
     public static int control_temp_upstairs = 0;
     public static int control_temp_main = 0;
-    public static int current_temp_upstairs = 0;
-    public static int current_temp_main = 0;
+    public static int current_temp_upstairs = 60;
+    public static int current_temp_main = 60;
 
     public Thermostats() {
         // Required empty public constructor
@@ -45,6 +46,8 @@ public class Thermostats extends Fragment {
         final SeekBar myseekbarupstair = (SeekBar) v.findViewById(R.id.seekbarcurrenttemp);
         final TextView textViewmain = (TextView) v.findViewById(R.id.controltempmain);
         final SeekBar myseekbarmain = (SeekBar) v.findViewById(R.id.seekbarcurrenttempmain);
+        final TextView textViewcurrent = (TextView) v.findViewById(R.id.currenttempval);
+
         radioGroup.clearCheck();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -55,6 +58,7 @@ public class Thermostats extends Fragment {
                 }
                 if  (checkedId == R.id.heat){
                     temp_mode = "heat";
+
                 }
                 if (checkedId == R.id.cool){
                     temp_mode = "cool";
@@ -63,6 +67,7 @@ public class Thermostats extends Fragment {
                 if (checkedId == R.id.off){
                     temp_mode = "off";
                 }
+                textViewcurrent.setText(Integer.toString(current_temp_upstairs));
 
             }
         });
@@ -106,6 +111,8 @@ public class Thermostats extends Fragment {
                 if (checkedId == R.id.offmain){
                     temp_mode_main = "off";
                 }
+
+
 
             }
         });
@@ -187,5 +194,6 @@ public class Thermostats extends Fragment {
 
         return v;
     }
+
 
 }
