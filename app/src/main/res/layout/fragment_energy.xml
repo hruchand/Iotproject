@@ -2,14 +2,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="60dp"
     tools:context="edu.sprakas1uncc.iotproject.Energy">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/textviewwnergy1"
-        android:textSize="50dp"
-         />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="Thermostat Energy"
+        android:id="@+id/energythermo"
+                 />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/readingthermo"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Light Energy"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:id="@+id/energylight"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/readinglight"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Door/Window Sensor"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="100dp"
+        android:id="@+id/doorwindowsensor"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="120dp"
+
+        android:id="@+id/readingsensor"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="Motion Sensor"
+        android:layout_marginTop="150dp"
+        android:id="@+id/motionsensor"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/readiingmotionsensor"
+        />
+
+
 
 </FrameLayout>

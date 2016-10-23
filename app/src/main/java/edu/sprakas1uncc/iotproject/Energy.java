@@ -38,7 +38,7 @@ Timer updateTimer1;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v1 = inflater.inflate(R.layout.fragment_energy, container, false);
-        energy_consume =(TextView)v1.findViewById(R.id.textviewwnergy1) ;
+        energy_consume =(TextView)v1.findViewById(R.id.readingthermo) ;
         updateTimer1 = new Timer();
         return v1;
     }
