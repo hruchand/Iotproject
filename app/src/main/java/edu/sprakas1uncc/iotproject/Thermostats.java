@@ -13,12 +13,16 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Thermostats extends Fragment {
-
+int counter=0;
     public static String temp_mode = "";
     public static  String fan_mode = "";
     public static String temp_mode_main = "";
@@ -28,6 +32,11 @@ public class Thermostats extends Fragment {
     public static int current_temp_upstairs = 60;
     public static int current_temp_main = 60;
 
+    public static String mode = "";
+
+    TextView textViewcurrent;
+    Timer updateTimer;
+TextView textViewcurrent1;
     public Thermostats() {
         // Required empty public constructor
     }
@@ -38,6 +47,7 @@ public class Thermostats extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_thermostats, container, false);
+
         RadioGroup radioGroup = (RadioGroup) v.findViewById(R.id.radiogroupthermmode);
         RadioGroup radioGroupfan = (RadioGroup) v.findViewById(R.id.radiogroupthermfan);
         RadioGroup radioGroupmain = (RadioGroup) v.findViewById(R.id.radiogroupthermmodemain);
@@ -46,7 +56,10 @@ public class Thermostats extends Fragment {
         final SeekBar myseekbarupstair = (SeekBar) v.findViewById(R.id.seekbarcurrenttemp);
         final TextView textViewmain = (TextView) v.findViewById(R.id.controltempmain);
         final SeekBar myseekbarmain = (SeekBar) v.findViewById(R.id.seekbarcurrenttempmain);
-        final TextView textViewcurrent = (TextView) v.findViewById(R.id.currenttempval);
+         textViewcurrent = (TextView) v.findViewById(R.id.currenttempval);
+        textViewcurrent1 =(TextView)v.findViewById(R.id.currenttempvalmain) ;
+
+updateTimer = new Timer();
 
         radioGroup.clearCheck();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -58,16 +71,18 @@ public class Thermostats extends Fragment {
                 }
                 if  (checkedId == R.id.heat){
                     temp_mode = "heat";
+                    mode = temp_mode;
 
                 }
                 if (checkedId == R.id.cool){
                     temp_mode = "cool";
+                    mode = temp_mode;
                     Log.d ("temp mode", "cool");
                 }
                 if (checkedId == R.id.off){
                     temp_mode = "off";
                 }
-                textViewcurrent.setText(Integer.toString(current_temp_upstairs));
+             //   textViewcurrent.setText(Integer.toString(current_temp_upstairs));
 
             }
         });
@@ -102,11 +117,11 @@ public class Thermostats extends Fragment {
                     temp_mode_main = "undefined mode upstairs";
                 }
                 if  (checkedId == R.id.heatmain){
-                    temp_mode_main = "heat";
+                    temp_mode_main = "heatmain";
                 }
                 if (checkedId == R.id.coolmain){
-                    temp_mode_main = "cool";
-                    Log.d ("temp mode main", "cool");
+                    temp_mode_main = "coolmain";
+                    Log.d ("temp mode main", "coolmain");
                 }
                 if (checkedId == R.id.offmain){
                     temp_mode_main = "off";
@@ -195,5 +210,47 @@ public class Thermostats extends Fragment {
         return v;
     }
 
+@Override
+public void onStart(){
+    super.onStart();
+    updateTimer.scheduleAtFixedRate(new updateTask(new Handler(),this),0, 1000);
+}
+    @Override
+    public void onStop(){
+        super.onStop();
+        updateTimer.cancel();
+
+    }
+
+
+    public  void update(){
+       textViewcurrent.setText(Integer.toString(current_temp_upstairs));
+        textViewcurrent1.setText(Integer.toString(current_temp_main));
+
+
+
+      //  textViewcurrent.setText(String.valueOf(++counter));
+    }
+private class  updateTask extends TimerTask{
+   Handler handler;
+    Thermostats thermostats;
+    public updateTask(Handler handler, Thermostats thermostats){
+        super();
+        this.handler=handler;
+        this.thermostats=thermostats;
+    }
+    @Override
+    public void run(){
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                thermostats.update();
+            }
+        });
+
+    }
+
+
+}
 
 }
