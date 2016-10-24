@@ -1,7 +1,5 @@
 package edu.sprakas1uncc.iotproject;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -16,8 +14,10 @@ import java.util.TimerTask;
 
 public class Energy extends Fragment {
 
-    TextView energy_consume ;
-Timer updateTimer1;
+    TextView energy_consume_therm;
+    TextView energy_consume_lights;
+Timer updateTimertherm;
+Timer updateTimerlight;
     public static int energy_cons_thermostat=0;
 
 
@@ -38,25 +38,32 @@ Timer updateTimer1;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v1 = inflater.inflate(R.layout.fragment_energy, container, false);
-        energy_consume =(TextView)v1.findViewById(R.id.readingthermo) ;
-        updateTimer1 = new Timer();
+        energy_consume_therm =(TextView)v1.findViewById(R.id.readingthermo);
+        energy_consume_lights =(TextView)v1.findViewById(R.id.readinglight);
+        updateTimertherm = new Timer();
+        updateTimerlight = new Timer();
         return v1;
     }
 
     @Override
     public void onStart(){
         super.onStart();
-        updateTimer1.scheduleAtFixedRate(new updateTask(new Handler(),this),0, 1000);
+        updateTimertherm.scheduleAtFixedRate(new updateTask(new Handler(),this),0, 1000);
+        updateTimerlight.scheduleAtFixedRate(new updateTask(new Handler(),this),0, 1000);
     }
     @Override
     public void onStop(){
         super.onStop();
-        updateTimer1.cancel();
+        updateTimertherm.cancel();
+        updateTimerlight.cancel();
 
 
     }
     public  void update(){
-        energy_consume.setText(Integer.toString(energy_cons_thermostat));
+        energy_consume_therm.setText(Integer.toString(energy_cons_thermostat));
+    }
+    public  void update_light(){
+        energy_consume_lights.setText(Integer.toString(Lights.consumption_light));
     }
 
     private class  updateTask extends TimerTask {
@@ -73,6 +80,7 @@ Timer updateTimer1;
                 @Override
                 public void run() {
                     energy.update();
+                    energy.update_light();
                 }
             });
 

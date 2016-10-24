@@ -47,6 +47,7 @@ public class sqlactivity extends AppCompatActivity {
     public  void  onCreate(Bundle savedInstanceState)
     {
     SimulationThreadThermostat simulationThreadThermostat = new SimulationThreadThermostat();
+        LightSimulationThread lightSimulationThread =new LightSimulationThread();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         final EditText userName = (EditText)findViewById(R.id.editText1);

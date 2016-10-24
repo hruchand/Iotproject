@@ -37,19 +37,19 @@
         android:id="@+id/tall1"/>
 
     <Switch
-        android:id="@+id/kitSwitch"
+        android:id="@+id/mainSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="23dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="120dp"
-        android:text="Kitchen" />
+        android:text="Mian Floor" />
     <SeekBar
         android:layout_width="match_parent"
 
         android:layout_height="10dp"
-        android:id="@+id/seekbarkit"
+        android:id="@+id/seekbarmain"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="18dp"
@@ -64,19 +64,19 @@
         android:layout_marginTop="170dp"
         android:id="@+id/tall2"/>
     <Switch
-        android:id="@+id/baseSwitch"
+        android:id="@+id/upstairSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="23dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="190dp"
-        android:text="Basement" />
+        android:text="Upstairs" />
     <SeekBar
         android:layout_width="match_parent"
 
         android:layout_height="10dp"
-        android:id="@+id/seekbarbase"
+        android:id="@+id/seekbarupstair"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="18dp"

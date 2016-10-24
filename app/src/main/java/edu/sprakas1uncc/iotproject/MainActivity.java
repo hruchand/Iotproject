@@ -1,8 +1,10 @@
 package edu.sprakas1uncc.iotproject;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
          toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
       //  FragmentTransaction fra;
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity{
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
 
+         ;
+
             //@SuppressWarnings("StatementWithEmptyBody")
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -65,6 +70,7 @@ public class MainActivity extends AppCompatActivity{
                     case (R.id.home):
                         fra = getSupportFragmentManager().beginTransaction();
                         fra.replace(R.id.mainContainer,new HomeFragment());
+
                         fra.commit();
                         getSupportActionBar().setTitle("Security System");
                         item.setChecked(true);
