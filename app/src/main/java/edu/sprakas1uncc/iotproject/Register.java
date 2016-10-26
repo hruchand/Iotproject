@@ -163,7 +163,7 @@ public class Register extends Activity{
                 }
                 //finally on successfull verification the appropriate message is displayed
                 else {
-
+                    Log.d("status","inside status");
                     String status = getConnection(userName,password,first_Name, last_Name, mail, phone_No);
                     if(status.equals("true\n")){
                         Toast.makeText(getBaseContext(),"Registration Successfull!",Toast.LENGTH_SHORT).show();
@@ -183,7 +183,7 @@ public class Register extends Activity{
         });
     }
     public String getConnection(String usr, String pwd, String fName, String lName,String mail, String phone){
-
+Log.d("get conn","inside get connection");
         InputStream inputStream = null;
         String result = "";
         ArrayList<NameValuePair> nameValuePairs1 = new ArrayList<NameValuePair>();
@@ -199,7 +199,7 @@ public class Register extends Activity{
             HttpClient httpclient = new DefaultHttpClient();
 
             // have to change the ip here to correct ip
-            HttpPost httppost = new HttpPost("http://192.168.1.13/register.php");
+            HttpPost httppost = new HttpPost("http://192.168.1.3/register.php");
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs1));
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();
@@ -212,6 +212,7 @@ public class Register extends Activity{
         }
         //convert response to string
         try{
+            Log.d("buffer","inside try");
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"),8);
             StringBuilder sb = new StringBuilder();
             String line = null;
@@ -222,6 +223,7 @@ public class Register extends Activity{
             result=sb.toString();
         }
         catch(Exception e){
+            Log.d("buffer","inside catch");
             Log.e("log_tag", "Error converting result "+e.toString());
         }
         return result;

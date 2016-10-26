@@ -13,8 +13,13 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.net.URLEncoder;
 
 
 
@@ -41,6 +46,8 @@ TextView textViewcurrent1;
         // Required empty public constructor
     }
 
+    int temp = fetchData();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,7 +66,7 @@ TextView textViewcurrent1;
          textViewcurrent = (TextView) v.findViewById(R.id.currenttempval);
         textViewcurrent1 =(TextView)v.findViewById(R.id.currenttempvalmain) ;
 
-updateTimer = new Timer();
+    updateTimer = new Timer();
 
         radioGroup.clearCheck();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -252,5 +259,50 @@ private class  updateTask extends TimerTask{
 
 
 }
+
+    public int  fetchData(){
+        try {
+
+            int temp_curr;
+            String cId = "1";
+            String url = "http://192.168.1.3/fetchTher.php";
+            URL urlObj = new URL(url);
+            String result = "";
+            String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
+            //1
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            //2
+            DataOutputStream dataOut = new DataOutputStream(conn.getOutputStream());
+            dataOut.writeBytes(data);
+            //3
+            dataOut.flush();
+            dataOut.close();
+            DataInputStream in = new DataInputStream(conn.getInputStream());
+
+            String g;
+            while((g = in.readLine()) != null){
+
+                result += g;
+
+            }
+            Log.d("fetchdata", "inside fetch data");
+
+            in.close();
+            Log.d("fetchdata", "value"+result);
+
+
+
+        }
+        catch (Exception e){
+           // Log.d("fetchdata",e.getMessage());
+
+        }
+        return 0;
+    }
+
 
 }
