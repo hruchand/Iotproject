@@ -136,15 +136,9 @@ Timer updateTimerlight;
           //  Log.d("fetchdata", "value"+result);
             String[] numbersArray = result.split(" ");
             //energy_cons_thermostat = Integer.parseInt(numbersArray[0])+Integer.parseInt(numbersArray[1]);
-            energy_cons_thermostat = Integer.parseInt(numbersArray[0]);
+            energy_cons_thermostat = Integer.parseInt(numbersArray[0])+Integer.parseInt(numbersArray[1]);
             //int temp1 = Integer.parseInt(numbersArray[1]);
             //energy_cons_thermostat = temp+temp1;
-
-
-
-
-
-
 
         }
         catch (Exception e){
