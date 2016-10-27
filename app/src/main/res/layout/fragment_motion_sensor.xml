@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="60dp"
-    tools:context="edu.sprakas1uncc.iotproject.garageDoors">
+    tools:context="edu.sprakas1uncc.iotproject.MotionSensor">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -11,17 +11,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
-        android:text="2-car Garage Door" />
+        android:text="upstairs" />
     <ToggleButton
-        android:id="@+id/garagelockbutton"
+        android:id="@+id/motionup"
         style="@style/Widget.AppCompat.Button"
-        android:layout_above="@+id/garage2car"
+        android:layout_above="@+id/dwsensorup"
         android:layout_marginTop="20dp"
-
         android:layout_marginLeft="150dp"
         android:text="ToggleButton"
-        android:textOn="open"
-        android:textOff="closed"
+        android:textOn="Active"
+        android:textOff="Inactive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
@@ -29,17 +28,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:layout_marginLeft="15dp"
-        android:text="1-car Garge Door" />
+        android:text="Main Floor" />
     <ToggleButton
-        android:id="@+id/backdoorbutton"
+        android:id="@+id/motionmain"
         style="@style/Widget.AppCompat.Button"
-        android:layout_above="@+id/garage1car"
+        android:layout_above="@+id/dwsensormain"
         android:layout_marginTop="60dp"
         android:layout_marginLeft="150dp"
 
         android:text="ToggleButton"
-        android:textOn="open"
-        android:textOff="closed"
+        android:textOn="Active"
+        android:textOff="Inactive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

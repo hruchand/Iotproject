@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity{
                         drawer.closeDrawers();
                         break;
                     case (R.id.garage_doors):
+                        Log.d("garade","garage doors");
                         fra = getSupportFragmentManager().beginTransaction();
                         fra.replace(R.id.mainContainer,new garageDoors());
                         fra.commit();
@@ -130,6 +132,22 @@ public class MainActivity extends AppCompatActivity{
                         fra.replace(R.id.mainContainer,new Energy());
                         fra.commit();
                         getSupportActionBar().setTitle("Energy");
+                        item.setChecked(true);
+                        drawer.closeDrawers();
+                        break;
+                    case(R.id.doorwindowsensor):
+                        fra = getSupportFragmentManager().beginTransaction();
+                        fra.replace(R.id.mainContainer,new Door_windowSensors());
+                        fra.commit();
+                        getSupportActionBar().setTitle("Door/Window Sensors");
+                        item.setChecked(true);
+                        drawer.closeDrawers();
+                        break;
+                    case(R.id.motionsensor):
+                        fra = getSupportFragmentManager().beginTransaction();
+                        fra.replace(R.id.mainContainer,new MotionSensor());
+                        fra.commit();
+                        getSupportActionBar().setTitle("Motion Sensor");
                         item.setChecked(true);
                         drawer.closeDrawers();
                         break;

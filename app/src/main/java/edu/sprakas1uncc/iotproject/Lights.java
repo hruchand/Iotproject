@@ -16,6 +16,10 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 
 
@@ -31,32 +35,26 @@ public class Lights extends Fragment {
     public static int consumption_light = 0;
 
 
-
-
-
-
-
-
-
-
     public Lights() {
         // Required empty public constructor
     }
 
+    int temp = fetchData();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_lights, container, false);
         final TextView textView = (TextView) v.findViewById(R.id.tall1);
         final TextView textView1 = (TextView) v.findViewById(R.id.tall2);
         final TextView textView2 = (TextView) v.findViewById(R.id.tall3);
-     final SeekBar    myseekbar = (SeekBar) v.findViewById(R.id.seekbarall);
+        final SeekBar myseekbar = (SeekBar) v.findViewById(R.id.seekbarall);
         final SeekBar myseekbar1 = (SeekBar) v.findViewById(R.id.seekbarmain);
         final SeekBar myseekbar2 = (SeekBar) v.findViewById(R.id.seekbarupstair);
-
+        textView1.setText(Integer.toString(percentage1));
+        textView2.setText(Integer.toString(percentage2));
 
         Switch s = (Switch) v.findViewById(R.id.allSwitch);
         s.setOnClickListener(new View.OnClickListener() {
@@ -68,16 +66,14 @@ super.onCreate(savedInstanceState);
         });
 
 
-
-
         myseekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                                   percentage = progress;
+                percentage = progress;
 
-                    Log.d("seekbar", "reached pregress change");
-                    textView.setText(Integer.toString(percentage));
-                          }
+                Log.d("seekbar", "reached pregress change");
+                textView.setText(Integer.toString(percentage));
+            }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -98,6 +94,7 @@ super.onCreate(savedInstanceState);
 
                 Log.d("seekbar", "reached pregress change");
                 textView1.setText(Integer.toString(percentage1));
+                setLightData(percentage1);
             }
 
             @Override
@@ -117,6 +114,7 @@ super.onCreate(savedInstanceState);
 
                 Log.d("seekbar", "reached pregress change");
                 textView2.setText(Integer.toString(percentage2));
+                setThermDataup(percentage2);
             }
 
             @Override
@@ -135,19 +133,147 @@ super.onCreate(savedInstanceState);
     }
 
 
-
-
 //  @Override
 //    public void onSaveInstanceState(Bundle outState){
 //
 //      super.onSaveInstanceState(outState);
 //      outState.putSerializable("count", consumption_light);
 
- // }
+    // }
+    public int fetchData() {
+        try {
+
+            int temp_curr;
+            String cId = "1";
+            String url = "http://192.168.1.3/fetchLight.php";
+            URL urlObj = new URL(url);
+            String result = "";
+            String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
+            //1
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            //2
+            DataOutputStream dataOut = new DataOutputStream(conn.getOutputStream());
+            dataOut.writeBytes(data);
+            //3
+            dataOut.flush();
+            dataOut.close();
+            DataInputStream in = new DataInputStream(conn.getInputStream());
+
+            String g;
+            while ((g = in.readLine()) != null) {
+
+                result += g;
+
+            }
+            Log.d("fetchdata", "inside fetch data");
+
+            in.close();
+            Log.d("fetchdata", "value" + result);
+            String[] numbersArray = result.split(" ");
+            percentage2 = Integer.parseInt(numbersArray[0]);
+            percentage1 = Integer.parseInt(numbersArray[1]);
+
+
+        } catch (Exception e) {
+
+        }
+
+        return 0;
+
+    }
+
+
+    public void setLightData(int x) {
+
+        try {
+            int temp_curr;
+            String cId = "1";
+            String url = "http://192.168.1.3/setLight.php";
+            URL urlObj = new URL(url);
+            String result = "";
+            String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
+            String data1 = " " + java.net.URLEncoder.encode(Integer.toString(x), "UTF-8");
+            //1
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            //2
+            DataOutputStream dataOut = new DataOutputStream(conn.getOutputStream());
+            dataOut.writeBytes(data);
+            dataOut.writeBytes(data1);
+            //3
+            dataOut.flush();
+            dataOut.close();
+            DataInputStream in = new DataInputStream(conn.getInputStream());
+
+            String g;
+            while ((g = in.readLine()) != null) {
+
+                result += g;
+
+            }
+            Log.d("fetchdata", "inside fetch data");
+
+            in.close();
+            //Log.d("fetchdata", "value" + result);
+            //String[] numbersArray = result.split(" ");
+            // current_temp_upstairs = Integer.parseInt(numbersArray[0]);
+            // current_temp_main = Integer.parseInt(numbersArray[1]);
+        } catch (Exception e) {
+
+        }
+    }
 
 
 
+    public void setThermDataup (int x) {
 
+        try {
+            int temp_curr;
+            String cId = "1";
+            String url = "http://192.168.1.3/setLightUp.php";
+            URL urlObj = new URL(url);
+            String result = "";
+            String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
+            String data1 = " " + java.net.URLEncoder.encode(Integer.toString(x), "UTF-8");
+            //1
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            //2
+            DataOutputStream dataOut = new DataOutputStream(conn.getOutputStream());
+            dataOut.writeBytes(data);
+            dataOut.writeBytes(data1);
+            //3
+            dataOut.flush();
+            dataOut.close();
+            DataInputStream in = new DataInputStream(conn.getInputStream());
+
+            String g;
+            while ((g = in.readLine()) != null) {
+
+                result += g;
+
+            }
+            Log.d("fetchdata", "inside fetch data");
+
+            in.close();
+            //Log.d("fetchdata", "value" + result);
+            //String[] numbersArray = result.split(" ");
+            // current_temp_upstairs = Integer.parseInt(numbersArray[0]);
+            // current_temp_main = Integer.parseInt(numbersArray[1]);
+        } catch (Exception e) {
+
+        }
+    }
 }
 
 

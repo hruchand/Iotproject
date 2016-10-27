@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class garageDoors extends Fragment {
+public class Door_windowSensors extends Fragment {
 
 
-    public garageDoors() {
+    public Door_windowSensors() {
         // Required empty public constructor
     }
 
@@ -23,7 +23,7 @@ public class garageDoors extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_garage_doors, container, false);
+        return inflater.inflate(R.layout.fragment_door_window_sensors, container, false);
     }
 
 }

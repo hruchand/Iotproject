@@ -92,13 +92,6 @@ Timer updateTimerlight;
         }
 
 
-
-
-
-
-
-
-
     }
 
     public int  fetchData(){

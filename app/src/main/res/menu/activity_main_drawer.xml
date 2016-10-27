@@ -43,6 +43,12 @@
                 
                 android:icon="@drawable/energy"
                 android:title="Energy" />
+            <item
+                android:id = "@+id/doorwindowsensor"
+                android:title="Door-Window Sensors"/>
+            <item
+                android:id = "@+id/motionsensor"
+                android:title="Motion Sensor"/>
         </menu>
     </item>
 
