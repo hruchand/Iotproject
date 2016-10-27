@@ -167,6 +167,7 @@ TextView textViewcurrent1;
 
                 Log.d("seekbar", "reached pregress change");
                 textViewupstair.setText(Integer.toString(control_temp_upstairs));
+                setThermDataup(control_temp_upstairs);
                 //  }
                 // else
                 // textView.setText("");
@@ -347,6 +348,53 @@ private class  updateTask extends TimerTask{
             //String[] numbersArray = result.split(" ");
            // current_temp_upstairs = Integer.parseInt(numbersArray[0]);
            // current_temp_main = Integer.parseInt(numbersArray[1]);
+        }
+        catch (Exception e){
+
+        }
+
+
+    }
+
+
+    public void setThermDataup (int x){
+
+        try {
+            int temp_curr;
+            String cId = "1";
+            String url = "http://192.168.1.3/setTherup.php";
+            URL urlObj = new URL(url);
+            String result = "";
+            String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
+            String data1 = " " + java.net.URLEncoder.encode(Integer.toString(x), "UTF-8");
+            //1
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            //2
+            DataOutputStream dataOut = new DataOutputStream(conn.getOutputStream());
+            dataOut.writeBytes(data);
+            dataOut.writeBytes(data1);
+            //3
+            dataOut.flush();
+            dataOut.close();
+            DataInputStream in = new DataInputStream(conn.getInputStream());
+
+            String g;
+            while ((g = in.readLine()) != null) {
+
+                result += g;
+
+            }
+            Log.d("fetchdata", "inside fetch data");
+
+            in.close();
+            //Log.d("fetchdata", "value" + result);
+            //String[] numbersArray = result.split(" ");
+            // current_temp_upstairs = Integer.parseInt(numbersArray[0]);
+            // current_temp_main = Integer.parseInt(numbersArray[1]);
         }
         catch (Exception e){
 
