@@ -38,38 +38,7 @@
         android:id="@+id/readinglight"
         />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Door/Window Sensor"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="100dp"
-        android:id="@+id/doorwindowsensor"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="120dp"
 
-        android:id="@+id/readingsensor"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:text="Motion Sensor"
-        android:layout_marginTop="150dp"
-        android:id="@+id/motionsensor"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
-        android:layout_marginLeft="15dp"
-        android:id="@+id/readiingmotionsensor"
-        />
 
 
 

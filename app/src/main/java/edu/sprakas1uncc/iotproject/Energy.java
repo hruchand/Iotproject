@@ -31,6 +31,7 @@ Timer updateTimerlight;
     }
 
     int temp = fetchData();
+    int temp1 = fetchLightData();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -141,6 +142,54 @@ Timer updateTimerlight;
         return 0;
     }
 
+
+
+    public int  fetchLightData(){
+        try {
+
+            int temp_curr;
+            String cId = "1";
+            String url = "http://192.168.1.3/fetchLightEnergy.php";
+            URL urlObj = new URL(url);
+            String result = "";
+            String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
+            //1
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            //2
+            DataOutputStream dataOut = new DataOutputStream(conn.getOutputStream());
+            dataOut.writeBytes(data);
+            //3
+            dataOut.flush();
+            dataOut.close();
+            DataInputStream in = new DataInputStream(conn.getInputStream());
+
+            String g;
+            while((g = in.readLine()) != null){
+
+                result += g;
+
+            }
+            // Log.d("fetchdata", "inside fetch data");
+
+            in.close();
+            //  Log.d("fetchdata", "value"+result);
+            String[] numbersArray = result.split(" ");
+            //energy_cons_thermostat = Integer.parseInt(numbersArray[0])+Integer.parseInt(numbersArray[1]);
+            Lights.consumption_light= Integer.parseInt(numbersArray[0])+Integer.parseInt(numbersArray[1]);
+            //int temp1 = Integer.parseInt(numbersArray[1]);
+            //energy_cons_thermostat = temp+temp1;
+
+        }
+        catch (Exception e){
+            // Log.d("fetchdata",e.getMessage());
+
+        }
+        return 0;
+    }
 
 }
 

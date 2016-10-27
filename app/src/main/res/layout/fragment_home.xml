@@ -26,13 +26,13 @@
             android:textColor="@color/cardview_light_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <Button
-            android:id="@+id/garagebutton"
-            android:layout_marginTop="0dp"
-            android:layout_gravity="center"
-            android:text="View Status"
-            android:layout_width="250dp"
-            android:layout_height="50dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/statusgarage"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+             />
     </android.support.v7.widget.CardView>
 
 
@@ -53,13 +53,13 @@
             android:textColor="@color/cardview_light_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <Button
-            android:id="@+id/secsysbutton"
-            android:layout_marginTop="0dp"
-            android:layout_gravity="center"
-            android:text="View Status"
-            android:layout_width="250dp"
-            android:layout_height="50dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/statussecsys"
+            android:layout_marginTop="50dp"
+             />
     </android.support.v7.widget.CardView>
 
 
@@ -79,13 +79,13 @@
             android:textColor="@color/cardview_light_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <Button
-            android:id="@+id/locksbutton"
-            android:text="View Status"
-            android:layout_marginTop="0dp"
-            android:layout_gravity="center"
-            android:layout_width="250dp"
-            android:layout_height="50dp" />
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:id="@+id/statuslocked"
+            android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+         />
     </android.support.v7.widget.CardView>
 
 
