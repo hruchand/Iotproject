@@ -34,8 +34,8 @@ int counter=0;
     public static  String fan_mode_main = "";
     public static int control_temp_upstairs = 0;
     public static int control_temp_main = 0;
-    public static int current_temp_upstairs = 60;
-    public static int current_temp_main = 60;
+    public static int current_temp_upstairs;
+    public static int current_temp_main;
 
     public static String mode = "";
 
@@ -293,6 +293,10 @@ private class  updateTask extends TimerTask{
 
             in.close();
             Log.d("fetchdata", "value"+result);
+            String[] numbersArray = result.split(" ");
+            current_temp_upstairs = Integer.parseInt(numbersArray[0]);
+            current_temp_main = Integer.parseInt(numbersArray[1]);
+
 
 
 

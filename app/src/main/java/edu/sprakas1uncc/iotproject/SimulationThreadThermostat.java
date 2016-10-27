@@ -18,7 +18,7 @@ public class SimulationThreadThermostat extends Thermostats implements Runnable 
     Thread thread = new Thread(this);
     public SimulationThreadThermostat()
     {
-        thread.start();
+        //thread.start();
     }
 
 

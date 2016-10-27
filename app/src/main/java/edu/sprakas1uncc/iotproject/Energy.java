@@ -3,11 +3,16 @@ package edu.sprakas1uncc.iotproject;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,7 +30,7 @@ Timer updateTimerlight;
         // Required empty public constructor
     }
 
-
+    int temp = fetchData();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,7 +101,58 @@ Timer updateTimerlight;
 
     }
 
+    public int  fetchData(){
+        try {
 
+            int temp_curr;
+            String cId = "1";
+            String url = "http://192.168.1.3/fetchEner.php";
+            URL urlObj = new URL(url);
+            String result = "";
+            String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
+            //1
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            //2
+            DataOutputStream dataOut = new DataOutputStream(conn.getOutputStream());
+            dataOut.writeBytes(data);
+            //3
+            dataOut.flush();
+            dataOut.close();
+            DataInputStream in = new DataInputStream(conn.getInputStream());
+
+            String g;
+            while((g = in.readLine()) != null){
+
+                result += g;
+
+            }
+           // Log.d("fetchdata", "inside fetch data");
+
+            in.close();
+          //  Log.d("fetchdata", "value"+result);
+            String[] numbersArray = result.split(" ");
+            //energy_cons_thermostat = Integer.parseInt(numbersArray[0])+Integer.parseInt(numbersArray[1]);
+            energy_cons_thermostat = Integer.parseInt(numbersArray[0]);
+            //int temp1 = Integer.parseInt(numbersArray[1]);
+            //energy_cons_thermostat = temp+temp1;
+
+
+
+
+
+
+
+        }
+        catch (Exception e){
+            // Log.d("fetchdata",e.getMessage());
+
+        }
+        return 0;
+    }
 
 
 }
