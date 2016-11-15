@@ -13,10 +13,7 @@
                 android:id="@+id/security_system"
                 android:icon="@drawable/lock_solid"
                 android:title="Security System" />
-            <item
-                android:id="@+id/images"
-                android:icon="@drawable/image"
-                android:title="Images" />
+
             <item
                 android:id="@+id/locks"
                 android:icon="@drawable/key"
@@ -25,10 +22,7 @@
                 android:id="@+id/garage_doors"
                 android:icon="@drawable/garage"
                 android:title="Garage Doors" />
-            <item
-                android:id="@+id/video"
-                android:icon="@drawable/video"
-                android:title="Video" />
+
             <item
                 android:id="@+id/lights"
                 android:icon="@drawable/lights"
@@ -49,6 +43,9 @@
             <item
                 android:id = "@+id/motionsensor"
                 android:title="Motion Sensor"/>
+            <item
+                android:id = "@+id/video"
+                android:title="Video"/>
         </menu>
     </item>
 

@@ -79,7 +79,7 @@ public static String lock_status_front = "unlocked";
                     // The toggle is disabled
                     Log.d("toggle button", "Button is OFF");
                     lock_status_front= "unlocked";
-                    setBackData(lock_status_front);
+                    setFrontData(lock_status_front);
                 }
             }
         });

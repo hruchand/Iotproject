@@ -86,14 +86,14 @@ public class MainActivity extends AppCompatActivity{
                         item.setChecked(true);
                         drawer.closeDrawers();
                         break;
-                    case (R.id.images):
-                        fra = getSupportFragmentManager().beginTransaction();
-                        fra.replace(R.id.mainContainer,new Image());
-                        fra.commit();
-                        getSupportActionBar().setTitle("Images");
-                        item.setChecked(true);
-                        drawer.closeDrawers();
-                        break;
+//                    case (R.id.images):
+//                        fra = getSupportFragmentManager().beginTransaction();
+//                        fra.replace(R.id.mainContainer,new Image());
+//                        fra.commit();
+//                        getSupportActionBar().setTitle("Images");
+//                        item.setChecked(true);
+//                        drawer.closeDrawers();
+//                        break;
                     case (R.id.locks):
                         fra = getSupportFragmentManager().beginTransaction();
                         fra.replace(R.id.mainContainer,new Locks());
@@ -148,6 +148,22 @@ public class MainActivity extends AppCompatActivity{
                         fra.replace(R.id.mainContainer,new MotionSensor());
                         fra.commit();
                         getSupportActionBar().setTitle("Motion Sensor");
+                        item.setChecked(true);
+                        drawer.closeDrawers();
+                        break;
+                    case(R.id.geo_services):
+                        fra = getSupportFragmentManager().beginTransaction();
+                        fra.replace(R.id.mainContainer,new GeoServices());
+                        fra.commit();
+                        getSupportActionBar().setTitle("Geo Service");
+                        item.setChecked(true);
+                        drawer.closeDrawers();
+                        break;
+                    case(R.id.video):
+                        fra = getSupportFragmentManager().beginTransaction();
+                        fra.replace(R.id.mainContainer,new Video());
+                        fra.commit();
+                        getSupportActionBar().setTitle("Video");
                         item.setChecked(true);
                         drawer.closeDrawers();
                         break;

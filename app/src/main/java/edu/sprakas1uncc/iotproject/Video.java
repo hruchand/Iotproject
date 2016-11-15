@@ -6,6 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.net.Uri;
+import android.widget.MediaController;
+import android.widget.VideoView;
+//import android.media.session.MediaController;
 
 
 /**
@@ -23,7 +27,16 @@ public class Video extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video, container, false);
+        View v = inflater.inflate(R.layout.fragment_video, container, false);
+        VideoView vidView = (VideoView)v.findViewById(R.id.myVideo);
+
+        String vidAddress = "http://192.168.1.3/video5.mp4";
+        Uri vidUri = Uri.parse(vidAddress);
+        vidView.setVideoURI(vidUri);
+      // MediaController vidControl = new MediaController();
+        //vidControl.setAnchorView(vidView);
+        vidView.start();
+        return  v;
     }
 
 }
