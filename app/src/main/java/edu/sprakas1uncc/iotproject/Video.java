@@ -30,7 +30,7 @@ public class Video extends Fragment {
         View v = inflater.inflate(R.layout.fragment_video, container, false);
         VideoView vidView = (VideoView)v.findViewById(R.id.myVideo);
 
-        String vidAddress = "http://192.168.1.3/video5.mp4";
+        String vidAddress = "http://192.168.1.3/v1.mp4";
         Uri vidUri = Uri.parse(vidAddress);
         vidView.setVideoURI(vidUri);
       // MediaController vidControl = new MediaController();

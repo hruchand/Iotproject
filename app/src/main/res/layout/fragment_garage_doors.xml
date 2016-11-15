@@ -20,8 +20,8 @@
 
         android:layout_marginLeft="150dp"
         android:text="ToggleButton"
-        android:textOn="open"
-        android:textOff="closed"
+        android:textOn="locked"
+        android:textOff="unlocked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
@@ -38,8 +38,8 @@
         android:layout_marginLeft="150dp"
 
         android:text="ToggleButton"
-        android:textOn="open"
-        android:textOff="closed"
+        android:textOn="locked"
+        android:textOff="unlocked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

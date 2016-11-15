@@ -29,19 +29,7 @@
         android:text="Armed Away"
         />
 </RadioGroup>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Current Status"
-        android:layout_marginTop="130dp"
-        android:layout_marginLeft="10dp"
-         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:layout_marginTop="150dp"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/sys_status" />
+
 
 </FrameLayout>

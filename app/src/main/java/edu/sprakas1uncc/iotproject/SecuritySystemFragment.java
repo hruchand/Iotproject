@@ -35,9 +35,24 @@ int trmp = fetchData();
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_security_system, container, false);
         RadioGroup radioGroup = (RadioGroup) v.findViewById(R.id.radiogroup);
-        final TextView textView = (TextView) v.findViewById(R.id.sys_status);
-        radioGroup.clearCheck();
-        textView.setText(sys_status);
+        RadioButton radioButtonAs = (RadioButton) v.findViewById(R.id.armedstay);
+        RadioButton radioButtonAa = (RadioButton) v.findViewById(R.id.armedaway);
+        RadioButton radioButtond = (RadioButton) v.findViewById(R.id.disarmed);
+
+        Log.d("sec sys", sys_status);
+        if(sys_status.equalsIgnoreCase("armed_away ")){
+            Log.d("sec sys", sys_status);
+            radioButtonAa.setChecked(true);
+
+        }
+        if(sys_status.equalsIgnoreCase("armed_stay ")){
+            radioButtonAs.setChecked(true);
+            Log.d("sec sys", sys_status);
+        }
+        if(sys_status.equalsIgnoreCase("disarmed ")){
+            radioButtond.setChecked(true);
+            Log.d("sec sys", sys_status);
+        }
 
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -51,20 +66,20 @@ int trmp = fetchData();
                 if  (checkedId == R.id.armedaway){
                     Log.d("radio", "armedaway");
                     sys_status = "armed_away";
-                    textView.setText(sys_status);
-                    setLightData(sys_status);
+
+                    setSecurityData(sys_status);
                 }
                 if (checkedId == R.id.armedstay){
                     Log.d("radio","armedstay");
                     sys_status = "armed_stay";
-                    textView.setText(sys_status);
-                    setLightData(sys_status);
+
+                    setSecurityData(sys_status);
                 }
                 if (checkedId == R.id.disarmed){
                     Log.d("radio","disarmed");
                     sys_status = "disarmed";
-                    textView.setText(sys_status);
-                    setLightData(sys_status);
+
+                    setSecurityData(sys_status);
                 }
 
             }
@@ -108,6 +123,7 @@ int trmp = fetchData();
             sys_status = result;
 
 
+
         } catch (Exception e) {
 
         }
@@ -116,7 +132,7 @@ int trmp = fetchData();
 
     }
 
-    public void setLightData(String x) {
+    public void setSecurityData(String x) {
 
         try {
             int temp_curr;

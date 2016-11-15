@@ -59,35 +59,75 @@ TextView textViewcurrent1;
         RadioGroup radioGroupfan = (RadioGroup) v.findViewById(R.id.radiogroupthermfan);
         RadioGroup radioGroupmain = (RadioGroup) v.findViewById(R.id.radiogroupthermmodemain);
         RadioGroup radioGroupfanmain = (RadioGroup) v.findViewById(R.id.radiogroupthermfanmain);
+        RadioButton radioButtonUpHeat = (RadioButton) v.findViewById(R.id.heat);
+        RadioButton radioButtonUpCool = (RadioButton) v.findViewById(R.id.cool);
+        RadioButton radioButtonUpOff = (RadioButton) v.findViewById(R.id.off);
+        RadioButton radioButtonMainHeat = (RadioButton) v.findViewById(R.id.heatmain);
+        RadioButton radioButtonMainCool = (RadioButton) v.findViewById(R.id.coolmain);
+        RadioButton radioButtonMainOff = (RadioButton) v.findViewById(R.id.offmain);
         final TextView textViewupstair = (TextView) v.findViewById(R.id.controltemp);
         final SeekBar myseekbarupstair = (SeekBar) v.findViewById(R.id.seekbarcurrenttemp);
         final TextView textViewmain = (TextView) v.findViewById(R.id.controltempmain);
         final SeekBar myseekbarmain = (SeekBar) v.findViewById(R.id.seekbarcurrenttempmain);
          textViewcurrent = (TextView) v.findViewById(R.id.currenttempval);
         textViewcurrent1 =(TextView)v.findViewById(R.id.currenttempvalmain) ;
+        if(temp_mode.equalsIgnoreCase("heat")){
+            radioButtonUpHeat.setChecked(true);
+            Log.d("rb up","heatmode up");
+            Log.d("rb up",temp_mode);
+
+
+
+        }
+        if(temp_mode.equalsIgnoreCase("cool")){
+            radioButtonUpCool.setChecked(true);
+
+        }
+        if(temp_mode.equalsIgnoreCase("off")){
+            radioButtonUpOff.setChecked(true);
+
+        }
+        if(temp_mode_main.equalsIgnoreCase("heat")){
+            radioButtonMainHeat.setChecked(true);
+            Log.d("rb main","heatmode main");
+            Log.d("rb main",temp_mode_main);
+
+        }
+        if(temp_mode_main.equalsIgnoreCase("cool")){
+            radioButtonMainCool.setChecked(true);
+
+        }
+        if(temp_mode_main.equalsIgnoreCase("cool")){
+            radioButtonMainOff.setChecked(true);
+
+        }
 
     updateTimer = new Timer();
 
-        radioGroup.clearCheck();
+        //radioGroup.clearCheck();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton rb = (RadioButton) group.findViewById(checkedId);
+
                 if (null != rb && checkedId > -1) {
                     temp_mode = "undefined mode upstairs";
                 }
                 if  (checkedId == R.id.heat){
                     temp_mode = "heat";
                     mode = temp_mode;
+                    setThermModeup(temp_mode);
 
                 }
                 if (checkedId == R.id.cool){
                     temp_mode = "cool";
                     mode = temp_mode;
+                    setThermModeup(temp_mode);
                     Log.d ("temp mode", "cool");
                 }
                 if (checkedId == R.id.off){
                     temp_mode = "off";
+                    setThermModeup(temp_mode);
                 }
              //   textViewcurrent.setText(Integer.toString(current_temp_upstairs));
 
@@ -95,7 +135,7 @@ TextView textViewcurrent1;
         });
 
 
-        radioGroupfan.clearCheck();
+        //radioGroupfan.clearCheck();
         radioGroupfan.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -115,7 +155,7 @@ TextView textViewcurrent1;
         });
 
 
-        radioGroupmain.clearCheck();
+        //radioGroupmain.clearCheck();
         radioGroupmain.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -124,14 +164,17 @@ TextView textViewcurrent1;
                     temp_mode_main = "undefined mode upstairs";
                 }
                 if  (checkedId == R.id.heatmain){
-                    temp_mode_main = "heatmain";
+                    temp_mode_main = "heat";
+                    setThermModemain(temp_mode_main);
                 }
                 if (checkedId == R.id.coolmain){
-                    temp_mode_main = "coolmain";
+                    temp_mode_main = "cool";
                     Log.d ("temp mode main", "coolmain");
+                    setThermModemain(temp_mode_main);
                 }
                 if (checkedId == R.id.offmain){
                     temp_mode_main = "off";
+                    setThermModemain(temp_mode_main);
                 }
 
 
@@ -140,7 +183,7 @@ TextView textViewcurrent1;
         });
 
 
-        radioGroupfanmain.clearCheck();
+       // radioGroupfanmain.clearCheck();
         radioGroupfanmain.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -298,6 +341,8 @@ private class  updateTask extends TimerTask{
             String[] numbersArray = result.split(" ");
             current_temp_upstairs = Integer.parseInt(numbersArray[0]);
             current_temp_main = Integer.parseInt(numbersArray[1]);
+            temp_mode = numbersArray[2];
+            temp_mode_main = numbersArray[3];
 
 
 
@@ -367,6 +412,97 @@ private class  updateTask extends TimerTask{
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
             String data1 = " " + java.net.URLEncoder.encode(Integer.toString(x), "UTF-8");
+            //1
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            //2
+            DataOutputStream dataOut = new DataOutputStream(conn.getOutputStream());
+            dataOut.writeBytes(data);
+            dataOut.writeBytes(data1);
+            //3
+            dataOut.flush();
+            dataOut.close();
+            DataInputStream in = new DataInputStream(conn.getInputStream());
+
+            String g;
+            while ((g = in.readLine()) != null) {
+
+                result += g;
+
+            }
+            Log.d("fetchdata", "inside fetch data");
+
+            in.close();
+            //Log.d("fetchdata", "value" + result);
+            //String[] numbersArray = result.split(" ");
+            // current_temp_upstairs = Integer.parseInt(numbersArray[0]);
+            // current_temp_main = Integer.parseInt(numbersArray[1]);
+        }
+        catch (Exception e){
+
+        }
+
+
+    }
+    public void setThermModeup (String x){
+
+        try {
+            int temp_curr;
+            String cId = "1";
+            String url = "http://192.168.1.3/setTherModeup.php";
+            URL urlObj = new URL(url);
+            String result = "";
+            String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
+            String data1 = " " + java.net.URLEncoder.encode(x, "UTF-8");
+            //1
+            HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            //2
+            DataOutputStream dataOut = new DataOutputStream(conn.getOutputStream());
+            dataOut.writeBytes(data);
+            dataOut.writeBytes(data1);
+            //3
+            dataOut.flush();
+            dataOut.close();
+            DataInputStream in = new DataInputStream(conn.getInputStream());
+
+            String g;
+            while ((g = in.readLine()) != null) {
+
+                result += g;
+
+            }
+            Log.d("fetchdata", "inside fetch data");
+
+            in.close();
+            //Log.d("fetchdata", "value" + result);
+            //String[] numbersArray = result.split(" ");
+            // current_temp_upstairs = Integer.parseInt(numbersArray[0]);
+            // current_temp_main = Integer.parseInt(numbersArray[1]);
+        }
+        catch (Exception e){
+
+        }
+
+
+    }
+
+    public void setThermModemain (String x){
+
+        try {
+            int temp_curr;
+            String cId = "1";
+            String url = "http://192.168.1.3/setTherModemain.php";
+            URL urlObj = new URL(url);
+            String result = "";
+            String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
+            String data1 = " " + java.net.URLEncoder.encode(x, "UTF-8");
             //1
             HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
             conn.setDoInput(true);
