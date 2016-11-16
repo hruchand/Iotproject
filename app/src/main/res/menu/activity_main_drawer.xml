@@ -39,32 +39,20 @@
                 android:title="Energy" />
             <item
                 android:id = "@+id/doorwindowsensor"
+                android:icon="@drawable/door"
                 android:title="Door-Window Sensors"/>
             <item
                 android:id = "@+id/motionsensor"
+                android:icon="@drawable/motion_sensor"
                 android:title="Motion Sensor"/>
             <item
                 android:id = "@+id/video"
+                android:icon="@drawable/video_icon"
                 android:title="Video"/>
-        </menu>
-    </item>
-
-
-    <item android:title="SETTINGS">
-        <menu>
-            <item
-                android:id="@+id/notifications"
-                android:icon="@drawable/notification"
-                android:title="Notifications" />
             <item
                 android:id="@+id/geo_services"
-                android:icon="@drawable/geoservices"
+                android:icon="@drawable/weather"
                 android:title="Geo-Services" />
-            <item
-                android:id="@+id/passcode"
-                android:icon="@drawable/images"
-                android:title="Passcode" />
         </menu>
     </item>
-
 </menu>
