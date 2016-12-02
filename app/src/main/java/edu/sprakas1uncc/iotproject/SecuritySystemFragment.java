@@ -92,7 +92,7 @@ int trmp = fetchData();
 
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/fetchSecurity.php";
+            String url = "http://10.0.0.3/fetchSecurity.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -137,7 +137,7 @@ int trmp = fetchData();
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setSecurity.php";
+            String url = "http://10.0.0.3/setSecurity.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");

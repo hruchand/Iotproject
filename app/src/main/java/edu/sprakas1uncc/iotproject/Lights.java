@@ -33,6 +33,9 @@ public class Lights extends Fragment {
     public static int percentage1 = 0;
     public static int percentage2 = 0;
     public static int consumption_light = 0;
+    public static String mainModeLight = "";
+    public static String upModeLight = "";
+
 
 
     public Lights() {
@@ -53,6 +56,8 @@ public class Lights extends Fragment {
         final SeekBar myseekbar = (SeekBar) v.findViewById(R.id.seekbarall);
         final SeekBar myseekbar1 = (SeekBar) v.findViewById(R.id.seekbarmain);
         final SeekBar myseekbar2 = (SeekBar) v.findViewById(R.id.seekbarupstair);
+        Switch mainSwitch = (Switch) v.findViewById(R.id.mainSwitch);
+        Switch upSwitch = (Switch) v.findViewById(R.id.upstairSwitch);
         textView1.setText(Integer.toString(percentage1));
         textView2.setText(Integer.toString(percentage2));
 
@@ -114,7 +119,7 @@ public class Lights extends Fragment {
 
                 Log.d("seekbar", "reached pregress change");
                 textView2.setText(Integer.toString(percentage2));
-                setThermDataup(percentage2);
+                setLightDataup(percentage2);
             }
 
             @Override
@@ -145,7 +150,7 @@ public class Lights extends Fragment {
 
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/fetchLight.php";
+            String url = "http://10.0.0.3/fetchLight.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -192,7 +197,7 @@ public class Lights extends Fragment {
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setLight.php";
+            String url = "http://10.0.0.3/setLight.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -232,12 +237,12 @@ public class Lights extends Fragment {
 
 
 
-    public void setThermDataup (int x) {
+    public void setLightDataup (int x) {
 
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setLightUp.php";
+            String url = "http://10.0.0.3/setLightUp.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");

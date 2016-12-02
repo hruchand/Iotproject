@@ -26,15 +26,16 @@ public class Video extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the layout for this fragmentharsh
         View v = inflater.inflate(R.layout.fragment_video, container, false);
         VideoView vidView = (VideoView)v.findViewById(R.id.myVideo);
 
-        String vidAddress = "http://192.168.1.3/v1.mp4";
+        String vidAddress = "http://10.0.0.3/v2.mp4";
         Uri vidUri = Uri.parse(vidAddress);
         vidView.setVideoURI(vidUri);
-      // MediaController vidControl = new MediaController();
-        //vidControl.setAnchorView(vidView);
+       MediaController mediaController = new MediaController(getActivity());
+        mediaController.setAnchorView(vidView);
+        vidView.setMediaController(mediaController);
         vidView.start();
         return  v;
     }

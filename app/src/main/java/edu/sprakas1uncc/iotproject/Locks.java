@@ -127,7 +127,7 @@ toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/fetchLock.php";
+            String url = "http://10.0.0.3/fetchLock.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -179,7 +179,7 @@ toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setLocksgd.php";
+            String url = "http://10.0.0.3/setLocksgd.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -227,7 +227,7 @@ toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setLockbd.php";
+            String url = "http://10.0.0.3/setLockbd.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -273,7 +273,7 @@ toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setLocks.php";
+            String url = "http://10.0.0.3/setLocks.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");

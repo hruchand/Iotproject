@@ -97,7 +97,7 @@ TextView textViewcurrent1;
             radioButtonMainCool.setChecked(true);
 
         }
-        if(temp_mode_main.equalsIgnoreCase("cool")){
+        if(temp_mode_main.equalsIgnoreCase("off")){
             radioButtonMainOff.setChecked(true);
 
         }
@@ -310,7 +310,7 @@ private class  updateTask extends TimerTask{
 
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/fetchTher.php";
+            String url = "http://10.0.0.3/fetchTher.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -360,7 +360,7 @@ private class  updateTask extends TimerTask{
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setTher.php";
+            String url = "http://10.0.0.3/setTher.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -407,7 +407,7 @@ private class  updateTask extends TimerTask{
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setTherup.php";
+            String url = "http://10.0.0.3/setTherup.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -452,7 +452,7 @@ private class  updateTask extends TimerTask{
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setTherModeup.php";
+            String url = "http://10.0.0.3/setTherModeup.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -498,7 +498,7 @@ private class  updateTask extends TimerTask{
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setTherModemain.php";
+            String url = "http://10.0.0.3/setTherModemain.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");

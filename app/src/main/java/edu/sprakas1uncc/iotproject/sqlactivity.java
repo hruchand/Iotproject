@@ -160,7 +160,7 @@ public class sqlactivity extends AppCompatActivity {
             HttpClient httpclient = new DefaultHttpClient();
 
             // have to change the ip here to correct ip
-            HttpPost httppost = new HttpPost("http://192.168.1.3/login.php");
+            HttpPost httppost = new HttpPost("http://10.0.0.3/login.php");
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs1));
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();

@@ -48,7 +48,7 @@ int temp1 =fetchData();
 
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.107/fetchWeather.php";
+            String url = "http://10.0.0.3/fetchWeather.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");

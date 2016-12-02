@@ -38,8 +38,8 @@ public class garageDoors extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_garage_doors, container, false);
 
-        ToggleButton toggle = (ToggleButton) v.findViewById(R.id.garagelockbutton);
-        ToggleButton toggle1 = (ToggleButton) v.findViewById(R.id.backdoorbutton);
+        ToggleButton toggle1 = (ToggleButton) v.findViewById(R.id.garagelockbutton);
+        ToggleButton toggle = (ToggleButton) v.findViewById(R.id.backdoorbutton);
         //ToggleButton toggle2 = (ToggleButton) v.findViewById(R.id.frontButton);
 
 Log.d("lock1 stat",lock_status_1door);
@@ -99,7 +99,7 @@ Log.d("lock1 stat",lock_status_1door);
 
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/fetchGarage.php";
+            String url = "http://10.0.0.3/fetchGarage.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -151,7 +151,7 @@ Log.d("lock1 stat",lock_status_1door);
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/set1door.php";
+            String url = "http://10.0.0.3/set1door.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -199,7 +199,7 @@ Log.d("lock1 stat",lock_status_1door);
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/set2door.php";
+            String url = "http://10.0.0.3/set2door.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -245,7 +245,7 @@ Log.d("lock1 stat",lock_status_1door);
         try {
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/setLocks.php";
+            String url = "http://10.0.0.3/setLocks.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");

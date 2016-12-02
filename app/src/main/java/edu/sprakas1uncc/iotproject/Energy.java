@@ -100,7 +100,7 @@ Timer updateTimerlight;
 
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/fetchEner.php";
+            String url = "http://10.0.0.3/fetchEner.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
@@ -149,7 +149,7 @@ Timer updateTimerlight;
 
             int temp_curr;
             String cId = "1";
-            String url = "http://192.168.1.3/fetchLightEnergy.php";
+            String url = "http://10.0.0.3/fetchLightEnergy.php";
             URL urlObj = new URL(url);
             String result = "";
             String data = "cId=" + java.net.URLEncoder.encode(cId, "UTF-8");
